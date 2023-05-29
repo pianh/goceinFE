@@ -118,24 +118,12 @@ function Home() {
                 </div>
             </div>
             <div className={cx('wrapper-bottom')}>
-                <span>Stats</span>
+                <span className={cx('stats-title')}>Stats</span>
                 <div className={cx('content-right-draw-frame')}>
                     <div className={cx('frame-item-first')}>
                         <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
                         <span>6 Light</span>
                         <span className={cx('title-on')}>On</span>
-                        <FontAwesomeIcon className={cx('icon-off')} icon={faToggleOff} />
-                    </div>
-
-                    <div className={cx('frame-item-second')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>Air Conditioner</span>
-                        <FontAwesomeIcon className={cx('icon-off')} icon={faToggleOff} />
-                    </div>
-
-                    <div className={cx('frame-item-third')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>Washing Machine</span>
                         <FontAwesomeIcon className={cx('icon-off')} icon={faToggleOff} />
                     </div>
                 </div>
