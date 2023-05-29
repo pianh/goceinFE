@@ -14,6 +14,14 @@
     margin-top: 20px;
     margin-left: 16px;
 }
+.content-category-item--link {
+    text-decoration: none;
+    color: #000;
+}
+.content-category-item--link:hover {
+    text-decoration: none;
+    color: #000;
+}
 
 .avatar-wrapper img {
     margin-top: 20px;
@@ -81,8 +89,11 @@
     object-position: center;
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+
+    /* Apply darkness */
+    filter: brightness(0.5); /* Adjust the value (0 to 1) to control the darkness */
 }
 
 .content-room-right {

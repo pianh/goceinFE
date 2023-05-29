@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faAlignLeft,
@@ -40,15 +41,21 @@ function Home() {
                             <ul>
                                 <li className={cx('content-category-item')}>
                                     <FontAwesomeIcon className={cx('icon')} icon={faHouseChimney} />
-                                    <span>Home</span>
+                                    <Link to="/" className={cx('content-category-item--link')}>
+                                        <span>Home</span>
+                                    </Link>
                                 </li>
                                 <li className={cx('content-category-item')}>
                                     <FontAwesomeIcon className={cx('icon')} icon={faUser} />
-                                    <span>Profile</span>
+                                    <Link to="/room" className={cx('content-category-item--link')}>
+                                        <span>Profile</span>
+                                    </Link>
                                 </li>
                                 <li className={cx('content-category-item')}>
                                     <FontAwesomeIcon className={cx('icon')} icon={faNoteSticky} />
-                                    <span>Notification</span>
+                                    <Link to="/lamp" className={cx('content-category-item--link')}>
+                                        <span>Notification</span>
+                                    </Link>
                                 </li>
                                 <li className={cx('content-category-item')}>
                                     <FontAwesomeIcon className={cx('icon')} icon={faSignal} />
@@ -99,7 +106,11 @@ function Home() {
                                     <FontAwesomeIcon className={cx('icon-off')} icon={faToggleOff} />
                                     {/* <div className={cx('frame-item-button-on')}></div> */}
                                 </div>
-                                <div className={cx('frame-item-second')}></div>
+                                <div className={cx('frame-item-second')}>
+                                    <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
+                                    <span>Air</span>
+                                    <FontAwesomeIcon className={cx('icon-off')} icon={faToggleOff} />
+                                </div>
                             </div>
                         </div>
                     </div>

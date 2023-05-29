@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Room() {
@@ -11,7 +12,10 @@ function Room() {
             <div className={cx('inner')}>
                 <header className={cx('header-home')}>
                     <div className={cx('header-home-icon')}>
-                        <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faAlignLeft} />
+                        {/* <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faAlignLeft} /> */}
+                        <Link to="/" className={cx('content-category-item--link')}>
+                            <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faArrowLeft} />
+                        </Link>
                     </div>
                     <div className={cx('avatar-wrapper')}>
                         <img

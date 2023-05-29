@@ -2,8 +2,9 @@ import classNames from 'classnames/bind';
 import styles from './Lamp.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faAlignLeft, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import { faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,9 @@ function Lamp() {
                 </div>
                 <header className={cx('header-home')}>
                     <div className={cx('header-home-icon')}>
-                        <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faArrowLeft} />
+                        <Link to="/" className={cx('content-category-item--link')}>
+                            <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faArrowLeft} />
+                        </Link>
                     </div>
                     <div className={cx('avatar-wrapper')}>
                         <img
