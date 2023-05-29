@@ -13,11 +13,18 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import $ from 'jquery';
 
 const cx = classNames.bind(styles);
 function Home() {
+    // Sidebar
+    const [showSidebar, setShowSidebar] = useState(false);
+
+    const toggleSidebar = () => {
+        setShowSidebar(!showSidebar);
+    };
+
     const contentRoomCenterRef = useRef(null);
 
     useEffect(() => {
@@ -67,7 +74,7 @@ function Home() {
     return (
         <section className={cx('wrapper')}>
             <div className={cx('wrapper-top')}>
-                <div className={cx('icon')}>
+                <div className={cx('icon')} onClick={toggleSidebar}>
                     <Link to="/" className={cx('content-category-item--link')}>
                         <FontAwesomeIcon className={cx('content-right-icon--align')} icon={faAlignLeft} />
                     </Link>
@@ -81,6 +88,46 @@ function Home() {
                     <div className={cx('shine-effect')}></div>
                 </div>
             </div>
+            {/* Hien thi sidebar */}
+            {showSidebar && (
+                <div className={cx('sidebar')}>
+                    <div className={cx('content-category')}>
+                        <ul>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faHouseChimney} />
+                                <Link to="/" className={cx('content-category-item--link')}>
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faUser} />
+                                <Link to="/room" className={cx('content-category-item--link')}>
+                                    <span>Profile</span>
+                                </Link>
+                            </li>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faNoteSticky} />
+                                <Link to="/lamp" className={cx('content-category-item--link')}>
+                                    <span>Notification</span>
+                                </Link>
+                            </li>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faSignal} />
+                                <span>Stats</span>
+                            </li>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faClock} />
+                                <span>Schedules</span>
+                            </li>
+                            <li className={cx('content-category-item')}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faSliders} />
+                                <span>Settings</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            )}
+
             <div className={cx('wrapper-center')}>
                 <div className={cx('content-text')}>
                     <h2>Welcome</h2>
