@@ -1,15 +1,33 @@
 import classNames from 'classnames/bind';
 import styles from './Lamp.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faToggleOff } from '@fortawesome/free-solid-svg-icons';
-import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faAlignLeft,
+    faClock,
+    faHouseChimney,
+    faNoteSticky,
+    faSignal,
+    faSliders,
+    faToggleOff,
+    faUser,
+    faArrowLeft,
+} from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
-
+// import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
 const cx = classNames.bind(styles);
 
 function Lamp() {
+    // Sidebar
+    const [showSidebar, setShowSidebar] = useState(false);
+
+    const toggleSidebar = () => {
+        setShowSidebar(!showSidebar);
+    };
+
     // Button
     const [buttonState, setButtonState] = useState('On');
 
@@ -18,9 +36,57 @@ function Lamp() {
     };
 
     const [buttonStateTwo, setButtonStateTwo] = useState('Off');
+
     const toggleButtonTwo = () => {
-        setButtonStateTwo(buttonStateTwo === 'Off' ? 'Off' : 'On');
+        setButtonStateTwo(buttonStateTwo === 'Off' ? 'On' : 'Off');
     };
+
+    const [buttonStateThree, setButtonStateThree] = useState('Off');
+
+    const toggleButtonThree = () => {
+        setButtonStateThree(buttonStateThree === 'Off' ? 'On' : 'Off');
+    };
+
+    const contentRoomCenterRef = useRef(null);
+
+    useEffect(() => {
+        const contentRoomCenter = $(contentRoomCenterRef.current);
+
+        // Gắn kết sự kiện kéo chuột
+        contentRoomCenter.on('mousedown', function (event) {
+            var startX = event.pageX;
+
+            $(document).on('mousemove', function (event) {
+                var distance = event.pageX - startX;
+                contentRoomCenter.scrollLeft(contentRoomCenter.scrollLeft() - distance);
+            });
+        });
+
+        // Sự kiện thả chuột
+        $(document).on('mouseup', function () {
+            $(document).off('mousemove');
+        });
+
+        // Thực hiện căn giữa hình ảnh chính giữa sau khi trang được tải lại
+        const handleWindowLoad = () => {
+            const centerImage = contentRoomCenter.find('img');
+            const containerWidth = contentRoomCenter.width();
+            const imageWidth = centerImage.width();
+            const scrollLeft = (imageWidth - containerWidth) / 2;
+
+            contentRoomCenter.scrollLeft(scrollLeft);
+        };
+
+        $(window).on('load', handleWindowLoad);
+
+        // Cleanup
+        return () => {
+            contentRoomCenter.off('mousedown');
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+            $(window).off('load', handleWindowLoad);
+        };
+    }, []);
     return (
         <section className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -51,28 +117,62 @@ function Lamp() {
                 <div className={cx('content-bottom')}>
                     <div className={cx('content-draw')}>
                         <div className={cx('content-right-draw-frame')}>
-                            <div className={cx('frame-item', 'item-one')}>
-                                <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                                <span>6 Light</span>
-                                <button className={cx('toggle-button')} onClick={toggleButton}>
-                                    <div className={cx('toggle-button-on')}>{buttonState}</div>
+                            <div className={cx('frame-item', 'item-one', { bgofff: buttonState === 'Off' })}>
+                                <FontAwesomeIcon
+                                    className={cx('icon-lightbulb', { bgofff: buttonState === 'Off' })}
+                                    icon={faLightbulb}
+                                />
+                                <span className={cx({ bgofff: buttonState === 'Off' })}>6 Lights</span>
+                                <button
+                                    className={cx('toggle-button', { bgofff: buttonState === 'Off' })}
+                                    onClick={toggleButton}
+                                >
+                                    <div className={cx('toggle-button-on', { bgofff: buttonState === 'Off' })}>
+                                        {buttonState}
+                                    </div>
                                     <div className={cx('cycle', { red: buttonState === 'Off' })}></div>
                                 </button>
                             </div>
-                            <div className={cx('frame-item', 'item-two')}>
-                                <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                                <span>Air Conditioner</span>
-                                <button className={cx('toggle-button', 'button-off')}>
-                                    <div className={cx('cycle-off')}></div>
-                                    <div className={cx('toggle-button-on')}>{buttonStateTwo}</div>
+
+                            <div className={cx('frame-item', 'item-two', { bgofftwo: buttonStateTwo === 'Off' })}>
+                                <FontAwesomeIcon
+                                    className={cx(
+                                        'icon-lightbulb',
+                                        { bgofftwo: buttonStateTwo === 'Off' },
+                                        { iconofftwo: buttonStateTwo === 'Off' },
+                                    )}
+                                    icon={faLightbulb}
+                                />
+                                <span className={cx({ bgofftwo: buttonStateTwo === 'Off' })}>6 Lights</span>
+                                <button
+                                    className={cx('toggle-button', { bgofftwo: buttonStateTwo === 'Off' })}
+                                    onClick={toggleButtonTwo}
+                                >
+                                    <div className={cx('toggle-button-on', { bgofftwo: buttonStateTwo === 'Off' })}>
+                                        {buttonStateTwo}
+                                    </div>
+                                    <div className={cx('cycle', { red: buttonStateTwo === 'Off' })}></div>
                                 </button>
                             </div>
-                            <div className={cx('frame-item', 'item-two')}>
-                                <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                                <span>Air Conditioner</span>
-                                <button className={cx('toggle-button', 'button-off')}>
-                                    <div className={cx('cycle-off')}></div>
-                                    <div className={cx('toggle-button-on')}>{buttonStateTwo}</div>
+
+                            <div className={cx('frame-item', 'item-three', { bgoffthree: buttonStateThree === 'Off' })}>
+                                <FontAwesomeIcon
+                                    className={cx(
+                                        'icon-lightbulb',
+                                        { bgoffthree: buttonStateThree === 'Off' },
+                                        { iconoffthree: buttonStateTwo === 'Off' },
+                                    )}
+                                    icon={faLightbulb}
+                                />
+                                <span className={cx({ bgofftwo: buttonStateThree === 'Off' })}>6 Lights</span>
+                                <button
+                                    className={cx('toggle-button', { bgoffthree: buttonStateThree === 'Off' })}
+                                    onClick={toggleButtonThree}
+                                >
+                                    <div className={cx('toggle-button-on', { bgoffthree: buttonStateThree === 'Off' })}>
+                                        {buttonStateThree}
+                                    </div>
+                                    <div className={cx('cycle', { red: buttonStateThree === 'Off' })}></div>
                                 </button>
                             </div>
                         </div>

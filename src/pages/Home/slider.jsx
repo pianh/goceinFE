@@ -38,7 +38,7 @@ function Slider() {
             <Carousel.Item>
                 <img
                     className={cx('d-block', 'w-100', 'content-right-image--bottom')}
-                    src="https://bangxephang.com/wp-content/uploads/2022/11/hoa-tulip1.jpg"
+                    src="https://image-us.eva.vn/upload/1-2021/images/2021-02-05/image5-1612512728-861-width600height400.jpg"
                     alt="Third slide"
                 />
 

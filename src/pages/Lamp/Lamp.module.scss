@@ -66,44 +66,57 @@
 
     .shine-effect {
         position: absolute;
-        bottom: -6px;
-        right: 54px;
+        top: 50px;
+        /* bottom: 272px; */
+        right: 55px;
         width: 10%;
-        height: 16px;
+        height: 10px;
         background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
         border-radius: 50%;
     }
-
-    .content-right-draw-frame {
-        position: absolute;
-        top: 494px;
+    .content-bottom {
         background-color: #1f3b2f;
         height: 400px;
+        position: absolute;
+        height: 516px;
+        width: 415px;
+        top: 480px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+    }
+
+    .content-right-draw-frame {
+        top: 494px;
+        height: 200px;
         width: 415px;
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
         display: flex;
-        z-index: 2;
+        z-index: 5;
         justify-content: space-evenly;
     }
     .frame-item {
         height: 160px;
         // width: 90px;
-        margin-top: 40px;
+        margin-top: 30px;
         background-color: #fff;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
-        flex-basis: 27%;
+        flex-basis: 28%;
         display: flex;
         flex-direction: column; //1 hang
         align-items: center;
     }
 
+    .item-one {
+        // align-items: center;
+    }
+
     .item-one span {
-        font-size: 1.5rem;
-        margin-top: 10px;
+        font-size: 1.4rem;
+        margin-top: 15px;
         margin-bottom: 16px;
         opacity: 0.8;
     }
@@ -112,25 +125,47 @@
         font-size: 1.4rem;
         margin-top: 15px;
         margin-bottom: 16px;
-        color: #899791;
+        opacity: 0.8;
+    }
+
+    .item-two .icon-lightbulb {
+        color: #000;
+        opacity: 0.8;
+    }
+
+    .item-three .icon-lightbulb {
+        color: #000;
+        opacity: 0.8;
     }
 
     .item-three span {
         font-size: 1.4rem;
         margin-top: 15px;
         margin-bottom: 16px;
-        color: #899791;
+        opacity: 0.8;
     }
 
     .item-two,
     .item-three {
-        background-color: #4b6057;
+        height: 160px;
+        margin-top: 30px;
+        background-color: #fff;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        flex-basis: 28%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #000;
     }
 
     .item-three span {
         font-size: 1.7rem;
         margin-top: 10px;
         margin-bottom: 16px;
+        opacity: 0.5;
     }
 
     .icon-lightbulb {
@@ -176,6 +211,34 @@
         background-color: red;
     }
 
+    .bgofff {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+
+    .bgofftwo {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+
+    .iconofftwo {
+        background-color: #4b6057 !important;
+        color: #e2e2e2 !important;
+    }
+
+    .iconoffthree {
+        background-color: #4b6057 !important;
+        color: #e2e2e2 !important;
+    }
+
+    .bgoffthree {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+
     .cycle-off {
         width: 18px;
         height: 18px;
@@ -188,9 +251,10 @@
     }
 
     .button-off {
-        opacity: 0.4;
+        opacity: 0.5;
         background-color: transparent !important;
         border-color: #3d5249 !important;
+        color: #fff;
     }
 
     .line {
@@ -199,7 +263,7 @@
         width: 370px;
         border-top: 1px solid white;
         z-index: 2;
-        margin-top: 167px;
+        margin-top: 12px;
         margin-left: 22px;
         margin-right: 22px;
         opacity: 0.5;
@@ -210,7 +274,7 @@
         z-index: 2;
         color: #fff;
         width: 100%;
-        margin-top: 28px;
+        margin-top: -125px;
         line-height: 20px;
     }
 
@@ -242,10 +306,10 @@
     .avegare {
         display: flex;
         justify-content: space-between;
-        margin-top: 7px;
+        margin-top: 12px;
         align-items: center; /* Để căn giữa theo chiều dọc */
         margin-left: 22px;
-        font-size: 0.4rem;
+        font-size: 0.6rem;
         opacity: 0.8;
         font-weight: 300;
     }
@@ -254,7 +318,7 @@
     .total .detail,
     .avegare .detail {
         margin-left: auto; /* Thêm thuộc tính này để đẩy phần tử sang góc bên phải */
-        margin-right: 60px;
+        margin-right: 25px;
         font-size: 1.4rem;
         font-weight: 400;
     }
@@ -264,7 +328,7 @@
         border-top: 1px solid white; /* Thêm thuộc tính này */
         z-index: 2;
         width: 370px;
-        margin-top: 280px;
+        margin-top: 144px;
         margin-right: 50px;
         margin-left: 22px;
         opacity: 0.5;
@@ -275,11 +339,11 @@
         color: #fff;
         width: 100%;
         display: flex;
-        margin-top: 300px;
+        margin-top: 164px;
         margin-left: 30px;
         align-items: center; /* Để căn giữa theo chiều dọc */
         margin-left: 22px;
-        font-size: 0.4rem;
+        font-size: 0.6rem;
         opacity: 0.9;
         font-weight: 300;
     }
@@ -294,7 +358,7 @@
         font-size: 2.8rem;
         margin-left: auto;
         margin-top: -5px;
-        margin-right: 78px;
+        margin-right: 45px;
         font-weight: 300;
         opacity: 0.2;
     }

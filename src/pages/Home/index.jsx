@@ -34,9 +34,16 @@ function Home() {
         setButtonState(buttonState === 'On' ? 'Off' : 'On');
     };
 
-    const [buttonStateTwo, setButtonStateTwo] = useState('Disable');
+    const [buttonStateTwo, setButtonStateTwo] = useState('Off');
+
     const toggleButtonTwo = () => {
-        setButtonStateTwo(buttonStateTwo === 'Off' ? 'Disable' : 'On');
+        setButtonStateTwo(buttonStateTwo === 'Off' ? 'On' : 'Off');
+    };
+
+    const [buttonStateThree, setButtonStateThree] = useState('Off');
+
+    const toggleButtonThree = () => {
+        setButtonStateThree(buttonStateThree === 'Off' ? 'On' : 'Off');
     };
 
     const contentRoomCenterRef = useRef(null);
@@ -181,7 +188,27 @@ function Home() {
                 <div className={cx('content-room')}>
                     <span className={cx('title')}>Rooms</span>
                     <div className={cx('content-room-list')}>
-                        <Slider />
+                        <div className="content-room-left">
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className="content-room-center" ref={contentRoomCenterRef}>
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className="content-room-right">
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -205,30 +232,47 @@ function Home() {
                         </button>
                     </div>
 
-                    <div className={cx('frame-item', 'item-two')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>Air Conditioner</span>
-                        <button className={cx('toggle-button', 'button-off')}>
-                            <div className={cx('cycle-off')}></div>
-                            <div className={cx('toggle-button-on')}>{buttonStateTwo}</div>
+                    <div className={cx('frame-item', 'item-two', { bgofftwo: buttonStateTwo === 'Off' })}>
+                        <FontAwesomeIcon
+                            className={cx(
+                                'icon-lightbulb',
+                                { bgofftwo: buttonStateTwo === 'Off' },
+                                { iconofftwo: buttonStateTwo === 'Off' },
+                            )}
+                            icon={faLightbulb}
+                        />
+                        <span className={cx({ bgofftwo: buttonStateTwo === 'Off' })}>6 Lights</span>
+                        <button
+                            className={cx('toggle-button', { bgofftwo: buttonStateTwo === 'Off' })}
+                            onClick={toggleButtonTwo}
+                        >
+                            <div className={cx('toggle-button-on', { bgofftwo: buttonStateTwo === 'Off' })}>
+                                {buttonStateTwo}
+                            </div>
+                            <div className={cx('cycle', { red: buttonStateTwo === 'Off' })}></div>
                         </button>
                     </div>
-                    <div className={cx('frame-item', 'item-two')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>Air Conditioner</span>
-                        <button className={cx('toggle-button', 'button-off')}>
-                            <div className={cx('cycle-off')}></div>
-                            <div className={cx('toggle-button-on')}>{buttonStateTwo}</div>
+
+                    <div className={cx('frame-item', 'item-three', { bgoffthree: buttonStateThree === 'Off' })}>
+                        <FontAwesomeIcon
+                            className={cx(
+                                'icon-lightbulb',
+                                { bgoffthree: buttonStateThree === 'Off' },
+                                { iconoffthree: buttonStateThree === 'Off' },
+                            )}
+                            icon={faLightbulb}
+                        />
+                        <span className={cx({ bgoffthree: buttonStateThree === 'Off' })}>6 Lights</span>
+                        <button
+                            className={cx('toggle-button', { bgoffthree: buttonStateThree === 'Off' })}
+                            onClick={toggleButtonThree}
+                        >
+                            <div className={cx('toggle-button-on', { bgoffthree: buttonStateThree === 'Off' })}>
+                                {buttonStateThree}
+                            </div>
+                            <div className={cx('cycle', { red: buttonStateThree === 'Off' })}></div>
                         </button>
                     </div>
-                    {/* <div className={cx('frame-item', 'item-three')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>6 Light</span>
-                        <button className={cx('toggle-button')} onClick={toggleButton}>
-                            <div className={cx('toggle-button-on')}>{buttonStateTwo}</div>
-                            <div className={cx('cycle', { red: buttonState === 'Off' })}></div>
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </section>

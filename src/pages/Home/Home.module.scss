@@ -107,25 +107,47 @@
         display: inline-block;
     }
 
-    .content-room-list img {
-        margin-top: 4px;
-        flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
-        object-fit: cover;
-        height: 370px;
-        width: 370px;
-        object-position: center;
-        border-radius: 26px;
-        filter: brihtness(0.5);
-        // margin-left: 10px;
-    }
+    // .content-room-list img {
+    //     margin-top: 4px;
+    //     flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
+    //     object-fit: cover;
+    //     height: 370px;
+    //     width: 370px;
+    //     object-position: center;
+    //     border-radius: 26px;
+    //     filter: brihtness(0.5);
+    //     // margin-left: 10px;
+    // }
+
+    // .content-room-list {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     // overflow-x: scroll;
+    //     white-space: nowrap;
+    //     margin: 0 20px;
+    // }
 
     .content-room-list {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        // overflow-x: scroll;
+        justify-content: space-between;
+        overflow-x: scroll;
         white-space: nowrap;
-        margin: 0 20px;
+    }
+
+    .content-room-list img {
+        margin-top: 4px;
+        height: 346px;
+        flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
+        width: 346px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 26px;
+        filter: brightness(0.5);
+        margin-right: 10px;
+    }
+    .content-room-left {
+        margin-left: 8px;
     }
 
     // Bottom
@@ -172,7 +194,7 @@
     }
 
     .item-one span {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         margin-top: 15px;
         margin-bottom: 16px;
         opacity: 0.8;
@@ -182,25 +204,40 @@
         font-size: 1.4rem;
         margin-top: 15px;
         margin-bottom: 16px;
-        color: #899791;
+        opacity: 0.8;
     }
 
     .item-two .icon-lightbulb {
-        color: #fff;
-        opacity: 0.7;
+        color: #000;
+        opacity: 0.8;
+    }
+
+    .item-three .icon-lightbulb {
+        color: #000;
+        opacity: 0.8;
     }
 
     .item-three span {
         font-size: 1.4rem;
         margin-top: 15px;
         margin-bottom: 16px;
-        color: #899791;
+        opacity: 0.8;
     }
 
     .item-two,
     .item-three {
-        background-color: #4b6057;
-        opacity: 0.5;
+        height: 160px;
+        margin-top: 30px;
+        background-color: #fff;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        flex-basis: 28%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #000;
     }
 
     .item-three span {
@@ -258,6 +295,29 @@
         color: #e2e2e2;
         opacity: 0.8;
     }
+
+    .bgofftwo {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+
+    .iconofftwo {
+        background-color: #4b6057 !important;
+        color: #e2e2e2 !important;
+    }
+
+    .iconoffthree {
+        background-color: #4b6057 !important;
+        color: #e2e2e2 !important;
+    }
+
+    .bgoffthree {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
+
     .cycle-off {
         width: 18px;
         height: 18px;
