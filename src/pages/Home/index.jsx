@@ -14,8 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
+// import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
-
+import Slider from './slider';
 const cx = classNames.bind(styles);
 function Home() {
     // Sidebar
@@ -32,9 +34,9 @@ function Home() {
         setButtonState(buttonState === 'On' ? 'Off' : 'On');
     };
 
-    const [buttonStateTwo, setButtonStateTwo] = useState('Off');
+    const [buttonStateTwo, setButtonStateTwo] = useState('Disable');
     const toggleButtonTwo = () => {
-        setButtonStateTwo(buttonStateTwo === 'Off' ? 'Off' : 'On');
+        setButtonStateTwo(buttonStateTwo === 'Off' ? 'Disable' : 'On');
     };
 
     const contentRoomCenterRef = useRef(null);
@@ -81,13 +83,13 @@ function Home() {
         <section className={cx('wrapper', { 'sidebar-open': showSidebar })}>
             {/* Hien thi sidebar */}
             {showSidebar && (
-                <div className={cx('sidebar')}>
+                <div className={cx('sidebar ')}>
                     <div className={cx('content-category')}>
                         <div className={cx('content-category-top')}>
                             <div className={cx('avatar-wrapper')}>
                                 <img
                                     className={cx('avatar')}
-                                    src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/122b95d1cd9bd6f885598a039dc6b74d~c5_300x300.webp?x-expires=1685160000&x-signature=NRbUQhxPNCtrJxyXV26Te2rM0hI%3D"
+                                    src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
                                     alt="Hoa"
                                 />
                                 <div className={cx('shine-effect')}></div>
@@ -160,7 +162,7 @@ function Home() {
                 <div className={cx('avatar-wrapper')}>
                     <img
                         className={cx('avatar')}
-                        src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/122b95d1cd9bd6f885598a039dc6b74d~c5_300x300.webp?x-expires=1685160000&x-signature=NRbUQhxPNCtrJxyXV26Te2rM0hI%3D"
+                        src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
                         alt="Hoa"
                     />
                     <div className={cx('shine-effect')}></div>
@@ -179,41 +181,30 @@ function Home() {
                 <div className={cx('content-room')}>
                     <span className={cx('title')}>Rooms</span>
                     <div className={cx('content-room-list')}>
-                        <div className="content-room-left">
-                            <img
-                                className=""
-                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
-                                alt="room"
-                            />
-                        </div>
-                        <div className="content-room-center" ref={contentRoomCenterRef}>
-                            <img
-                                className=""
-                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
-                                alt="room"
-                            />
-                        </div>
-                        <div className="content-room-right">
-                            <img
-                                className=""
-                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
-                                alt="room"
-                            />
-                        </div>
+                        <Slider />
                     </div>
                 </div>
             </div>
             <div className={cx('wrapper-bottom')}>
                 <span className={cx('stats-title')}>Stats</span>
                 <div className={cx('content-right-draw-frame')}>
-                    <div className={cx('frame-item', 'item-one')}>
-                        <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
-                        <span>6 Lights</span>
-                        <button className={cx('toggle-button')} onClick={toggleButton}>
-                            <div className={cx('toggle-button-on')}>{buttonState}</div>
+                    <div className={cx('frame-item', 'item-one', { bgofff: buttonState === 'Off' })}>
+                        <FontAwesomeIcon
+                            className={cx('icon-lightbulb', { bgofff: buttonState === 'Off' })}
+                            icon={faLightbulb}
+                        />
+                        <span className={cx({ bgofff: buttonState === 'Off' })}>6 Lights</span>
+                        <button
+                            className={cx('toggle-button', { bgofff: buttonState === 'Off' })}
+                            onClick={toggleButton}
+                        >
+                            <div className={cx('toggle-button-on', { bgofff: buttonState === 'Off' })}>
+                                {buttonState}
+                            </div>
                             <div className={cx('cycle', { red: buttonState === 'Off' })}></div>
                         </button>
                     </div>
+
                     <div className={cx('frame-item', 'item-two')}>
                         <FontAwesomeIcon className={cx('icon-lightbulb')} icon={faLightbulb} />
                         <span>Air Conditioner</span>

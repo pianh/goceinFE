@@ -36,7 +36,7 @@ function Lamp() {
                     <div className={cx('avatar-wrapper')}>
                         <img
                             className={cx('avatar')}
-                            src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/122b95d1cd9bd6f885598a039dc6b74d~c5_300x300.webp?x-expires=1685160000&x-signature=NRbUQhxPNCtrJxyXV26Te2rM0hI%3D"
+                            src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
                             alt="Hoa"
                         />
                         <div className={cx('shine-effect')}></div>

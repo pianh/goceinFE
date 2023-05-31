@@ -97,40 +97,36 @@
         margin-bottom: 5px;
         font-size: 2.1rem;
         color: #333d39;
+        margin-left: 20px;
     }
 
     .content-room span {
         font-size: 1.5rem;
-        margin: 0 0 0 16px;
+        //margin: 0 0 0 16px;
         font-weight: 500;
         display: inline-block;
     }
 
-    .content-room-list {
-        display: flex;
-        justify-content: space-between;
-        overflow-x: scroll;
-        white-space: nowrap;
-    }
-
     .content-room-list img {
         margin-top: 4px;
-        height: 346px;
         flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
-        width: 346px;
         object-fit: cover;
+        height: 370px;
+        width: 370px;
         object-position: center;
         border-radius: 26px;
-        filter: brightness(0.5);
-        margin-right: 10px;
-    }
-    .content-room-left {
-        margin-left: 8px;
+        filter: brihtness(0.5);
+        // margin-left: 10px;
     }
 
-    // .content-room-center {
-    //     margin-left: 4px;
-    // }
+    .content-room-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // overflow-x: scroll;
+        white-space: nowrap;
+        margin: 0 20px;
+    }
 
     // Bottom
 
@@ -204,12 +200,14 @@
     .item-two,
     .item-three {
         background-color: #4b6057;
+        opacity: 0.5;
     }
 
     .item-three span {
         font-size: 1.7rem;
         margin-top: 10px;
         margin-bottom: 16px;
+        opacity: 0.5;
     }
 
     .icon-lightbulb {
@@ -255,6 +253,11 @@
         background-color: red;
     }
 
+    .bgofff {
+        background-color: #4b6057;
+        color: #e2e2e2;
+        opacity: 0.8;
+    }
     .cycle-off {
         width: 18px;
         height: 18px;
@@ -267,21 +270,23 @@
     }
 
     .button-off {
-        opacity: 0.4;
+        opacity: 0.5;
         background-color: transparent !important;
         border-color: #3d5249 !important;
+        color: #fff;
     }
 
-    .sidebar-open .wrapper-top,
-    .sidebar-open .wrapper-center,
-    .sidebar-open .wrapper-bottom {
-        display: none;
+    .sidebar-open {
+        background-color: #1f3b2f;
+        width: 100%;
+        position: relative; /* Đảm bảo sidebar có vị trí tương đối để z-index hoạt động */
+        z-index: 1;
+        height: 900px;
     }
 
     .sidebar-open .content-category {
         height: 900px;
-        background-color: #1f3b2f;
-        width: 100%;
+
         z-index: 3;
     }
 
@@ -306,7 +311,7 @@
     .sidebar-open .shine-effect {
         position: absolute;
         bottom: -5px;
-        right: 124px;
+        right: 140px;
         width: 30%;
         height: 20px;
         background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
@@ -388,5 +393,13 @@
         opacity: 0.4;
         padding-top: 40px;
         font-weight: 400;
+    }
+
+    .sidebar-open > .wrapper-top,
+    .sidebar-open > .wrapper-center,
+    .sidebar-open > .wrapper-bottom {
+        transform: scale(0.8) translateX(70%);
+        z-index: 2;
+        display: none;
     }
 }
