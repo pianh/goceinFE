@@ -130,26 +130,34 @@
 
     .content-room-list {
         display: flex;
-        justify-content: space-between;
-        overflow-x: scroll;
-        white-space: nowrap;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        // justify-content: center;
+    }
+
+    .content-room-list .item {
+        flex-shrink: 0;
+        scroll-snap-align: start;
     }
 
     .content-room-list img {
         margin-top: 4px;
-        height: 346px;
-        flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
-        width: 346px;
+        height: 350px;
+        // flex-shrink: 0; /* Ngăn ảnh co lại để hiển thị tất cả hình */
+        width: 350px;
         object-fit: cover;
         object-position: center;
         border-radius: 26px;
         filter: brightness(0.5);
-        margin-right: 10px;
-    }
-    .content-room-left {
-        margin-left: 8px;
+        // margin-right: 12px;
+        margin: 0 10px;
     }
 
+    .centered-image {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
     // Bottom
 
     .wrapper-bottom {

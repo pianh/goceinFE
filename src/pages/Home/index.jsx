@@ -66,6 +66,12 @@ function Home() {
             $(document).off('mousemove');
         });
 
+        // Thực hiện cuộn ngang đến hình ở giữa
+        contentRoomCenter[0].scrollIntoView({
+            behavior: 'smooth',
+            inline: 'center',
+        });
+
         // Thực hiện căn giữa hình ảnh chính giữa sau khi trang được tải lại
         const handleWindowLoad = () => {
             const centerImage = contentRoomCenter.find('img');
@@ -86,6 +92,7 @@ function Home() {
             $(window).off('load', handleWindowLoad);
         };
     }, []);
+
     return (
         <section className={cx('wrapper', { 'sidebar-open': showSidebar })}>
             {/* Hien thi sidebar */}
@@ -188,21 +195,49 @@ function Home() {
                 <div className={cx('content-room')}>
                     <span className={cx('title')}>Rooms</span>
                     <div className={cx('content-room-list')}>
-                        <div className="content-room-left">
+                        <div className={cx('item', 'item1')}>
                             <img
                                 className=""
                                 src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
                                 alt="room"
                             />
                         </div>
-                        <div className="content-room-center" ref={contentRoomCenterRef}>
+                        <div className={cx('item')}>
                             <img
                                 className=""
                                 src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
                                 alt="room"
                             />
                         </div>
-                        <div className="content-room-right">
+                        <div className={cx('item')} ref={contentRoomCenterRef}>
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className={cx('item')}>
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className={cx('item')}>
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className={cx('item')}>
+                            <img
+                                className=""
+                                src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
+                                alt="room"
+                            />
+                        </div>
+                        <div className={cx('item')}>
                             <img
                                 className=""
                                 src="https://i.pinimg.com/originals/80/84/68/80846803dec86fe4ade91bcb51f1ba23.jpg"
