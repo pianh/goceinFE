@@ -207,7 +207,7 @@ export class ProductType extends Component {
                                         onClick={() => this.addClick()}
                                     >
                                         <FontAwesomeIcon className="" icon={faPlus} />
-                                        Thêm sản phẩm
+                                        Thêm loại
                                     </button>
 
                                     <table

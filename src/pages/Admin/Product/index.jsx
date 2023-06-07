@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faPencil, faPlus, faTable } from '@fortawesome/free-solid-svg-icons';
 import { Component } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import axios from 'axios';
 export class Product extends Component {
     constructor(props) {
@@ -13,16 +14,27 @@ export class Product extends Component {
             products: [],
             producttypes: [],
             modalTitle: '',
+            ProductId: 0,
             ProductName: '',
             ProductPrice: 0,
+            ProductType: '',
             ProductFileName: 'default.png',
-            ProductId: 0,
             CreateAt: '',
             UpdateAt: '',
-
             PhotoPath: variables.PHOTO_URL,
         };
     }
+
+    //Modal
+    changeProductName = (e) => {
+        this.setState({ ProductName: e.target.value });
+    };
+    changeProductType = (e) => {
+        this.setState({ ProductType: e.target.value });
+    };
+    changeProductPrice = (e) => {
+        this.setState({ ProductPrice: e.target.value });
+    };
 
     //Lay dư liệu trả về JSON
     refreshList() {
@@ -49,17 +61,6 @@ export class Product extends Component {
         this.refreshList();
     }
 
-    //Modal
-    changeProductName = (e) => {
-        this.setState({ ProductName: e.target.value });
-    };
-    changeProductPrice = (e) => {
-        this.setState({ ProductPrice: e.target.value });
-    };
-    changeProductType = (e) => {
-        this.setState({ ProductType: e.target.value });
-    };
-
     addClick() {
         this.setState({
             modalTitle: 'Thêm sản phẩm',
@@ -78,7 +79,7 @@ export class Product extends Component {
             ProductName: product.ProductName,
             ProductPrice: product.ProductPrice,
             ProductType: product.ProductType,
-            PhotoFileName: product.PhotoFileName,
+            ProductFileName: product.ProductFileName,
         });
     }
 
@@ -93,7 +94,7 @@ export class Product extends Component {
                 ProductName: this.state.ProductName,
                 ProductPrice: this.state.ProductPrice,
                 ProductType: this.state.ProductType,
-                PhotoFileName: this.state.PhotoFileName,
+                ProductFileName: this.state.ProductFileName,
             }),
         })
             .then((res) => res.json())
@@ -108,6 +109,55 @@ export class Product extends Component {
             );
     }
 
+    updateClick() {
+        fetch(variables.API_URL + 'product', {
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ProductId: this.state.ProductId,
+                ProductName: this.state.ProductName,
+                ProductPrice: this.state.ProductPrice,
+                ProductType: this.state.ProductType,
+                ProductFileName: this.state.ProductFileName,
+            }),
+        })
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    alert(result);
+                    this.refreshList();
+                },
+                (error) => {
+                    alert('Failed');
+                },
+            );
+    }
+
+    deleteClick(id) {
+        if (window.confirm('Bạn có chắc muốn xóa?')) {
+            fetch(variables.API_URL + 'product/' + id, {
+                method: 'DELETE',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((res) => res.json())
+                .then(
+                    (result) => {
+                        alert(result);
+                        this.refreshList();
+                    },
+                    (error) => {
+                        alert('Failed');
+                    },
+                );
+        }
+    }
+
     imageUpload = (e) => {
         e.preventDefault();
 
@@ -120,7 +170,7 @@ export class Product extends Component {
         })
             .then((res) => res.json())
             .then((data) => {
-                this.setState({ PhotoFileName: data });
+                this.setState({ ProductFileName: data });
             });
     };
     render() {
@@ -134,7 +184,7 @@ export class Product extends Component {
             ProductPrice,
             ProductType,
             PhotoPath,
-            PhotoFileName,
+            ProductFileName,
             CreateAt,
             UpdateAt,
         } = this.state;
@@ -182,7 +232,7 @@ export class Product extends Component {
                                             <tr>
                                                 <th>Số thứ tự</th>
                                                 <th>Tên sản phẩm</th>
-                                                <th>Giá sản phẩm</th>
+                                                <th>Giá sản phẩm /kg</th>
                                                 <th>Loại sản phẩm</th>
                                                 <th>Hình ảnh</th>
                                                 <th>Ngày tạo</th>
@@ -222,7 +272,7 @@ export class Product extends Component {
                                                         <button
                                                             type="button"
                                                             className="btn btn-danger mr-1 "
-                                                            onClick={() => this.deleteClick(product.ProductTypeId)}
+                                                            onClick={() => this.deleteClick(product.ProductId)}
                                                         >
                                                             <FontAwesomeIcon className="mr-2" icon={faTrash} />
                                                             Xóa
@@ -259,10 +309,13 @@ export class Product extends Component {
                                                             </div>
 
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-text">Giá sản phẩm</span>
+                                                                <span className="input-group-text">
+                                                                    Giá sản phẩm / Kg
+                                                                </span>
                                                                 <input
                                                                     type="number"
                                                                     className="form-control"
+                                                                    min-value="0"
                                                                     value={ProductPrice}
                                                                     onChange={this.changeProductPrice}
                                                                 />
@@ -275,9 +328,9 @@ export class Product extends Component {
                                                                     onChange={this.changeProductType}
                                                                     value={ProductType}
                                                                 >
-                                                                    {producttypes.map((dep) => (
-                                                                        <option key={dep.ProductTypeId}>
-                                                                            {dep.ProductTypeName}
+                                                                    {producttypes.map((type) => (
+                                                                        <option key={type.ProductTypeId}>
+                                                                            {type.ProductTypeName}
                                                                         </option>
                                                                     ))}
                                                                 </select>
@@ -288,7 +341,7 @@ export class Product extends Component {
                                                             <img
                                                                 width="250px"
                                                                 height="250px"
-                                                                src={PhotoPath + PhotoFileName}
+                                                                src={PhotoPath + ProductFileName}
                                                                 alt="a"
                                                             />
                                                             <input
@@ -304,7 +357,7 @@ export class Product extends Component {
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.createClick()}
                                                         >
-                                                            Create
+                                                            Thêm sản phẩm
                                                         </button>
                                                     ) : null}
 
@@ -314,7 +367,7 @@ export class Product extends Component {
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.updateClick()}
                                                         >
-                                                            Update
+                                                            Cập nhật
                                                         </button>
                                                     ) : null}
                                                 </div>

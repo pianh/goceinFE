@@ -2,6 +2,7 @@ import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircle, faCircleUser, faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 function HeaderAdmin() {
     return (
         <header id="header-admin" className="header-admin header-shadow fixed-header theme-white">
@@ -13,21 +14,26 @@ function HeaderAdmin() {
                 <div className="header-admin__content-left">
                     <ul className="header-admin__content-menu">
                         <li className="header-admin__content-menu--mega">
-                            Mega Menu{' '}
-                            <FontAwesomeIcon
-                                className="header-admin__content-menu--mega-icon"
-                                icon={faCircleChevronDown}
-                            />
+                            <Link to="/admin/product" style={{ textDecoration: 'none' }}>
+                                Sản phẩm
+                                <FontAwesomeIcon
+                                    className="header-admin__content-menu--mega-icon"
+                                    icon={faCircleChevronDown}
+                                />
+                            </Link>
                         </li>
+
                         <li className="header-admin__content-menu--setting">
-                            Setting
-                            <FontAwesomeIcon
-                                className="header-admin__content-menu--mega-icon"
-                                icon={faCircleChevronDown}
-                            />
+                            <Link to="/admin/product-type" style={{ textDecoration: 'none' }}>
+                                Loại sản phẩm
+                                <FontAwesomeIcon
+                                    className="header-admin__content-menu--mega-icon"
+                                    icon={faCircleChevronDown}
+                                />
+                            </Link>
                         </li>
                         <li className="header-admin__content-menu--message">
-                            Message
+                            Thông báo
                             <FontAwesomeIcon
                                 className="header-admin__content-menu--mega-icon"
                                 icon={faCircleChevronDown}

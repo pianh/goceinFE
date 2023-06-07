@@ -3,8 +3,8 @@ import $ from 'jquery';
 
 function Home() {
     return (
-        <div className="Home_wrapper">
-            <h1>Home Page</h1>
+        <div className="home-page__wrapper">
+            <header className="home-page__header"></header>
         </div>
     );
 }
