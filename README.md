@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+component tái sử dụng, đặt thẻ ul li, dùng thẻ a
+button có type, scss
+
+http://localhost:3000/assets/row.json
 369 x629
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

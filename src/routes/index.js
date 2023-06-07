@@ -1,17 +1,19 @@
 //Layouts
 
 // Pages
+import Product from '~/pages/Admin/Product';
+import ProductType from '~/pages/Admin/ProductType';
 import Home from '~/pages/Home';
-import Lamp from '~/pages/Lamp';
 
-const publicRoutes = [
-    // K can dang nhap
-    { path: '/', component: Home },
-    { path: '/lamp', component: Lamp },
+// Layouts
+
+// Pages
+
+const publicRoutes = [{ path: '/', component: Home }];
+
+const adminRoutes = [
+    { path: '/admin/product', component: Product },
+    { path: '/admin/product-type', component: ProductType },
 ];
 
-const privateRoutes = [
-    //Can dang nhap
-];
-
-export { publicRoutes, privateRoutes };
+export { publicRoutes, adminRoutes };

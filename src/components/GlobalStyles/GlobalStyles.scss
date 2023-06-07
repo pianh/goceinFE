@@ -23,9 +23,20 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed; //Toi uu hien thi nhanh nhat
     color: var(--text-color);
     overflow-x: hidden;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
 }

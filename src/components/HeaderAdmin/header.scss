@@ -1,0 +1,128 @@
+/* PC */
+@media screen and (min-width: 992px) {
+    #header-admin {
+        position: fixed;
+        background: #fafbfc;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        z-index: 15;
+        transition: all 0.2s;
+        width: 100%;
+        top: 0;
+    }
+    .header-shadow {
+        box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+            0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    }
+    .header-admin__logo img {
+        margin-left: 15px;
+        height: 45px;
+        width: 50px;
+    }
+
+    .header-admin__brand {
+        font-size: 2.2rem;
+        font-weight: 500;
+        margin-top: 2px;
+        margin-left: 8px;
+    }
+    .header-admin__content {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-content: center;
+        flex: 1;
+        margin-bottom: 0;
+        height: 60px;
+    }
+
+    .header-admin__content-left {
+        display: flex;
+        align-items: center;
+    }
+    .header-admin__content-menu {
+        list-style: none;
+        display: flex;
+        font-size: 1.7rem;
+        color: rgb(105, 109, 114);
+        margin: 0 0px;
+        cursor: pointer;
+        ul {
+            display: flex;
+        }
+
+        li {
+            margin: 0 15px;
+        }
+    }
+    .header-admin__content-menu--mega-icon {
+        margin-left: 5px;
+    }
+    .header-admin__form {
+        height: 38px;
+
+        input {
+            height: 100%;
+            width: 270px !important;
+            font-size: 1.5rem;
+            display: inline-block;
+            align-items: center;
+            text-align: left;
+            border: 1px solid rgb(206, 212, 218);
+            border-radius: 4px;
+            text-align: left;
+            padding-left: 10px;
+            &:focus {
+                outline: none;
+                border: 3px solid #bbdbfd;
+            }
+        }
+
+        button {
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            width: 75px;
+            border-radius: 4px;
+            border: 1px solid #dfe3ee;
+            font-size: 1.6rem;
+            &:hover {
+                background-color: rgb(87, 126, 223);
+                color: #fff;
+            }
+        }
+    }
+    .header__content-right {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        span {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        .header__content-right-icon {
+            font-size: 2.4rem;
+        }
+    }
+}
+
+/* Tablet & mobile */
+@media screen and (max-width: 991px) {
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+    .header_wrapper {
+        height: 100px;
+        background-color: #dfe3ee;
+        overflow: hidden;
+    }
+}
