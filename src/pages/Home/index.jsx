@@ -300,9 +300,54 @@ export class Home extends Component {
                         <button type="button">See More</button>
                     </div>
                 </section>
+                <hr className="home-page__break" />
                 <section className="home-page__product-group">
-                    <div className="home-page__product-navbar"></div>
-                    <div className="home-page__product-product"></div>
+                    <ul className="home-page__product-tab-list">
+                        <li className="home-page__product-tab-item">Tất cả</li>
+                        <li className="home-page__product-tab-item">Vegetable</li>
+                        <li className="home-page__product-tab-item">Fruit</li>
+                        <li className="home-page__product-tab-item">Frozen Food</li>
+                        <li className="home-page__product-tab-item">Fish & Seafood</li>
+                        <li className="home-page__product-tab-item">Cake & Bakery</li>
+                        <li className="home-page__product-tab-item">Khác</li>
+                    </ul>
+                    <div className="home-page__product">
+                        <div className="home-page__product-img">
+                            <img src={avocado} alt="broccoliorganic" style={{ width: '100px' }} />
+                        </div>
+                        <div className="home-page__product-body">
+                            <div>
+                                <span className="home-page__product-body-name">Banana Organic</span>
+                                <span className="home-page__product-body-shop">By Reno Shop</span>
+                            </div>
+                            <div className="home-page__product-body-detail">
+                                <div className="home-page__product-body-detail-review">
+                                    <div className="home-page__product-body-detail-start-group">
+                                        <FontAwesomeIcon
+                                            className="home-page__product-body-detail-start-icon"
+                                            icon={faStar}
+                                        />
+                                        <span>4.7</span>
+                                    </div>
+                                    <div className="home-page__product-body-detail-time">
+                                        <FontAwesomeIcon
+                                            className="home-page__product-body-detail-time-icon"
+                                            icon={faClock}
+                                        />
+                                        <span>5 min</span>
+                                    </div>
+                                </div>
+                                <div className="home-page__product-body-price-group">
+                                    <span>$</span>
+                                    <h3>5.87</h3>
+                                    <span> /Kg</span>
+                                </div>
+                            </div>
+                            <button type="button" className="home-page__product-body-button">
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
                 </section>
             </div>
         );
