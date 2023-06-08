@@ -245,7 +245,7 @@ export class Product extends Component {
                                                 <tr key={product.ProductId}>
                                                     <td>{idx + 1}</td>
                                                     <td>{product.ProductName}</td>
-                                                    <td>{product.ProductPrice}</td>
+                                                    <td>{product.ProductPrice} $</td>
                                                     <td>{product.ProductType}</td>
                                                     <td>
                                                         <img
@@ -342,7 +342,7 @@ export class Product extends Component {
                                                                 width="250px"
                                                                 height="250px"
                                                                 src={PhotoPath + ProductFileName}
-                                                                alt="a"
+                                                                alt="No Img Choose"
                                                             />
                                                             <input
                                                                 className="m-2"
