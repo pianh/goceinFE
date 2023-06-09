@@ -4,6 +4,7 @@ import {
     faCartShopping,
     faCircleCheck,
     faClock,
+    faHelmetSafety,
     faSackDollar,
     faStar,
     faTruck,
@@ -11,6 +12,9 @@ import {
 import './Home.scss';
 import axios from 'axios';
 import { Component } from 'react';
+import React, { useEffect } from 'react';
+import Waypoint from 'react-waypoint';
+import 'animate.css';
 
 import avocado from '../../assets/images/Avocado.png';
 import broccoliorganic from '../../assets/images/BroccoliOrganic.png';
@@ -20,11 +24,12 @@ import amazon from '../../assets/images/amazon.png';
 import google from '../../assets/images/google.png';
 import paypal from '../../assets/images/paypal.png';
 import air from '../../assets/images/air.png';
+import download from '../../assets/images/download3.avif';
 
 import { variables } from '../../Variables.js';
 import SearchIcon from '~/components/icon/search';
 import CartIcon from '~/components/icon/cart';
-import { faOpencart } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram, faOpencart, faTwitter } from '@fortawesome/free-brands-svg-icons';
 export class Home extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +45,8 @@ export class Home extends Component {
             CreateAt: '',
             UpdateAt: '',
             PhotoPath: variables.PHOTO_URL,
+            isVisible: false,
+            isFirstLi: true,
         };
     }
     //Lay dư liệu trả về JSON
@@ -65,7 +72,24 @@ export class Home extends Component {
 
     componentDidMount() {
         this.refreshList();
+        window.addEventListener('scroll', this.handleScroll);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        const scrollTop = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const offset = 200; // Distance from the element before the effect is triggered
+
+        if (scrollTop > windowHeight - offset) {
+            this.setState({ isVisible: true });
+        } else {
+            this.setState({ isVisible: false });
+        }
+    };
 
     render() {
         const {
@@ -78,8 +102,9 @@ export class Home extends Component {
             ProductFileName,
             CreateAt,
             UpdateAt,
+            isVisible,
         } = this.state;
-
+        console.log(products);
         return (
             <div className="home-page__wrapper">
                 <header className="home-page__header-wrapper">
@@ -99,7 +124,7 @@ export class Home extends Component {
                         <FontAwesomeIcon className="home-page__header-cart-icon" icon={faBagShopping} />
                     </div>
                 </header>
-                <section className="home-page-slider-wrapper">
+                <section className={`home-page-slider-wrapper ${isVisible ? 'animate__zoomIn' : ''}`}>
                     <div className="home-page__slider-text-wrapper">
                         <h1>A place where everything special</h1>
                         <p>
@@ -211,24 +236,14 @@ export class Home extends Component {
                 <section className="home-page__company">
                     <span className="home-page__company-title">Trusted and lovely by the best company</span>
                     <div className="home-page__company-brand">
-                        <img src={ifttt} alt="ifttt" className="img-fluid" style={{ height: '90px' }} />
-                        <img src={amazon} alt="amazon" className="img-fluid" style={{ height: '100px' }} />
-                        <img
-                            src={google}
-                            alt="google"
-                            className="img-fluid"
-                            style={{ height: '50px', marginTop: '20px' }}
-                        />
-                        <img src={paypal} alt="paypal" className="img-fluid" style={{ height: '90px' }} />
-                        <img
-                            src={air}
-                            alt="airbnb"
-                            className="img-fluid"
-                            style={{ height: '50px', marginTop: '20px' }}
-                        />
+                        <img src={ifttt} alt="ifttt" className="home-page__company-brand--ifttt" />
+                        <img src={amazon} alt="amazon" className="home-page__company-brand--amazon" />
+                        <img src={google} alt="google" className="home-page__company-brand--google" />
+                        <img src={paypal} alt="paypal" className="home-page__company-brand--paypal" />
+                        <img src={air} alt="airbnb" className="home-page__company-brand--air" />
                     </div>
                 </section>
-                <section className="home-page__service">
+                <section className={`home-page__service ${isVisible ? 'animate__animated animate__fadeInRight' : ''}`}>
                     <div className="home-page__service-daily">
                         <h1>Gocein could be your daily service</h1>
                         <p>
@@ -303,52 +318,97 @@ export class Home extends Component {
                 <hr className="home-page__break" />
                 <section className="home-page__product-group">
                     <ul className="home-page__product-tab-list">
-                        <li className="home-page__product-tab-item">Tất cả</li>
-                        <li className="home-page__product-tab-item">Vegetable</li>
-                        <li className="home-page__product-tab-item">Fruit</li>
-                        <li className="home-page__product-tab-item">Frozen Food</li>
-                        <li className="home-page__product-tab-item">Fish & Seafood</li>
-                        <li className="home-page__product-tab-item">Cake & Bakery</li>
-                        <li className="home-page__product-tab-item">Khác</li>
+                        {producttypes.map((producttype, index) => {
+                            const isFirstLiClass = index === 0 ? 'home-page__product-tab-item--first' : '';
+
+                            return (
+                                <li
+                                    key={index}
+                                    className={`home-page__product-tab-item ${isFirstLiClass}`}
+                                    style={isFirstLiClass ? { backgroundColor: '#44985a', color: '#fff' } : {}}
+                                >
+                                    {producttype.ProductTypeName}
+                                </li>
+                            );
+                        })}
                     </ul>
-                    <div className="home-page__product">
-                        <div className="home-page__product-img">
-                            <img src={avocado} alt="broccoliorganic" style={{ width: '100px' }} />
-                        </div>
-                        <div className="home-page__product-body">
-                            <div>
-                                <span className="home-page__product-body-name">Banana Organic</span>
-                                <span className="home-page__product-body-shop">By Reno Shop</span>
-                            </div>
-                            <div className="home-page__product-body-detail">
-                                <div className="home-page__product-body-detail-review">
-                                    <div className="home-page__product-body-detail-start-group">
-                                        <FontAwesomeIcon
-                                            className="home-page__product-body-detail-start-icon"
-                                            icon={faStar}
-                                        />
-                                        <span>4.7</span>
-                                    </div>
-                                    <div className="home-page__product-body-detail-time">
-                                        <FontAwesomeIcon
-                                            className="home-page__product-body-detail-time-icon"
-                                            icon={faClock}
-                                        />
-                                        <span>5 min</span>
-                                    </div>
+                    <div
+                        className={`home-page__product-item ${
+                            isVisible ? 'animate__animated animate__fadeInRight' : ''
+                        }`}
+                    >
+                        {products.map((product) => (
+                            <div className="home-page__product">
+                                <div className="home-page__product-img">
+                                    <img
+                                        src={PhotoPath + product.ProductFileName}
+                                        alt={product.ProductFileName}
+                                        width="150"
+                                        height="100"
+                                    />
                                 </div>
-                                <div className="home-page__product-body-price-group">
-                                    <span>$</span>
-                                    <h3>5.87</h3>
-                                    <span> /Kg</span>
+                                <div className="home-page__product-body">
+                                    <div className="home-page__product-body-info">
+                                        <span className="home-page__product-body-name">{product.ProductName}</span>
+                                        <div className="home-page__product-body-price-group">
+                                            <span>$</span>
+                                            <h3>{product.ProductPrice}</h3>
+                                            <span> /Kg</span>
+                                        </div>
+                                    </div>
+                                    <div className="home-page__product-body-detail">
+                                        <div className="home-page__product-body-detail-review">
+                                            <div className="home-page__product-body-detail-start-group">
+                                                <FontAwesomeIcon
+                                                    className="home-page__product-body-detail-start-icon"
+                                                    icon={faStar}
+                                                />
+                                                <span>4.7</span>
+                                            </div>
+                                            <div className="home-page__product-body-detail-time">
+                                                <FontAwesomeIcon
+                                                    className="home-page__product-body-detail-time-icon"
+                                                    icon={faClock}
+                                                />
+                                                <span>5 min</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" className="home-page__product-body-button">
+                                        Add to cart
+                                    </button>
                                 </div>
                             </div>
-                            <button type="button" className="home-page__product-body-button">
-                                Add to cart
-                            </button>
-                        </div>
+                        ))}
                     </div>
                 </section>
+                <div className="home-page__download">
+                    <img src={download} alt="" />
+                </div>
+                <footer className="home-footer-wrapper">
+                    <div className="home-footer__introduce">
+                        <FontAwesomeIcon className="home-footer__introduce-icon" icon={faHelmetSafety} />
+                        <span>
+                            Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit, sed do eiusmod tempor
+                            incididunt.
+                        </span>
+                    </div>
+                    <div className="home-footer__link">
+                        <ul>
+                            <li>Campaigns</li>
+                            <li>Email Marketing</li>
+                            <li>Branding</li>
+                            <li>Offline</li>
+                            <li>Contact</li>
+                            <li>FAQs</li>
+                        </ul>
+                    </div>
+                    <div className="home-footer__social">
+                        <FontAwesomeIcon className="home-footer__social-icon" icon={faFacebook} />
+                        <FontAwesomeIcon className="home-footer__social-icon" icon={faTwitter} />
+                        <FontAwesomeIcon className="home-footer__social-icon" icon={faInstagram} />
+                    </div>
+                </footer>
             </div>
         );
     }
