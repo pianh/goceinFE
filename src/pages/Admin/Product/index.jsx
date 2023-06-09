@@ -287,7 +287,9 @@ export class Product extends Component {
                                         <div className="modal-dialog modal-lg modal-dialog-centered">
                                             <div className="modal-content">
                                                 <div className="modal-header">
-                                                    <h5 className="modal-title">{modalTitle}</h5>
+                                                    <h5 className="modal-title" style={{ fontSize: '1.4rem' }}>
+                                                        {modalTitle}
+                                                    </h5>
                                                     <button
                                                         type="button"
                                                         className="btn-close"
@@ -299,37 +301,67 @@ export class Product extends Component {
                                                     <div className="d-flex flex-row bd-highlight mb-3">
                                                         <div className="p-2 w-50 bd-highlight">
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-text">Tên sản phẩm</span>
+                                                                <span
+                                                                    className="input-group-text"
+                                                                    style={{ fontSize: '1.6rem' }}
+                                                                >
+                                                                    Tên sản phẩm
+                                                                </span>
                                                                 <input
                                                                     type="text"
                                                                     className="form-control"
                                                                     value={ProductName}
                                                                     onChange={this.changeProductName}
+                                                                    style={{ height: '40px', fontSize: '1.6rem' }}
                                                                 />
                                                             </div>
 
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-text">
+                                                                <span
+                                                                    className="input-group-text"
+                                                                    style={{ fontSize: '1.6rem', marginTop: '20px' }}
+                                                                >
                                                                     Giá sản phẩm / Kg
                                                                 </span>
                                                                 <input
                                                                     type="number"
                                                                     className="form-control"
-                                                                    min-value="0"
+                                                                    min="0"
                                                                     value={ProductPrice}
                                                                     onChange={this.changeProductPrice}
+                                                                    style={{
+                                                                        height: '40px',
+                                                                        marginTop: '20px',
+                                                                        fontSize: '1.6rem',
+                                                                    }}
                                                                 />
                                                             </div>
 
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-text">Loại sản phẩm</span>
+                                                                <span
+                                                                    className="input-group-text"
+                                                                    style={{ fontSize: '1.6rem', marginTop: '20px' }}
+                                                                >
+                                                                    Loại sản phẩm
+                                                                </span>
                                                                 <select
                                                                     className="form-select"
                                                                     onChange={this.changeProductType}
                                                                     value={ProductType}
+                                                                    style={{
+                                                                        height: '40px',
+                                                                        marginTop: '20px',
+                                                                        fontSize: '1.6rem',
+                                                                    }}
                                                                 >
                                                                     {producttypes.map((type) => (
-                                                                        <option key={type.ProductTypeId}>
+                                                                        <option
+                                                                            key={type.ProductTypeId}
+                                                                            style={{
+                                                                                fontSize: '1.6rem',
+                                                                                marginTop: '20px',
+                                                                            }}
+                                                                        >
                                                                             {type.ProductTypeName}
                                                                         </option>
                                                                     ))}
@@ -356,6 +388,10 @@ export class Product extends Component {
                                                             type="button"
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.createClick()}
+                                                            style={{
+                                                                marginTop: '20px',
+                                                                fontSize: '1.6rem',
+                                                            }}
                                                         >
                                                             Thêm sản phẩm
                                                         </button>
@@ -366,6 +402,10 @@ export class Product extends Component {
                                                             type="button"
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.updateClick()}
+                                                            style={{
+                                                                marginTop: '20px',
+                                                                fontSize: '1.6rem',
+                                                            }}
                                                         >
                                                             Cập nhật
                                                         </button>

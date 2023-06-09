@@ -90,6 +90,7 @@ export class Home extends Component {
             this.setState({ isVisible: false });
         }
     };
+    //card
 
     render() {
         const {
@@ -189,9 +190,9 @@ export class Home extends Component {
                                         <span> /Kg</span>
                                     </div>
                                 </div>
-                                <button type="button" className="home-page__slider-card-button">
-                                    Add to cart
-                                </button>
+                                <div className="home-page__slider-card-button">
+                                    <button type="button">Add to cart</button>
+                                </div>
                             </div>
                         </div>
                         <div className="home-page__slider-card-before">
@@ -226,9 +227,9 @@ export class Home extends Component {
                                         <span> /Kg</span>
                                     </div>
                                 </div>
-                                <button type="button" className="home-page__slider-card-button">
-                                    Add to cart
-                                </button>
+                                <div className="home-page__slider-card-button">
+                                    <button type="button">Add to cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -374,9 +375,10 @@ export class Home extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" className="home-page__product-body-button">
-                                        Add to cart
-                                    </button>
+
+                                    <div className="home-page__product-body-button">
+                                        <button type="button">Add to cart</button>
+                                    </div>
                                 </div>
                             </div>
                         ))}

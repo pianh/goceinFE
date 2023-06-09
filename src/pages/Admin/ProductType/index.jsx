@@ -259,7 +259,9 @@ export class ProductType extends Component {
                                         <div className="modal-dialog modal-lg modal-dialog-centered">
                                             <div className="modal-content">
                                                 <div className="modal-header">
-                                                    <h5 className="modal-title">{modalTitle}</h5>
+                                                    <h5 className="modal-title" style={{ fontSize: '1.4rem' }}>
+                                                        {modalTitle}
+                                                    </h5>
                                                     <button
                                                         type="button"
                                                         className="btn-close"
@@ -269,12 +271,26 @@ export class ProductType extends Component {
                                                 </div>
                                                 <div className="modal-body">
                                                     <div className="input-group mb-3">
-                                                        <span className="input-group-text">Loại sản phẩm</span>
+                                                        <span
+                                                            className="input-group-text"
+                                                            style={{
+                                                                fontSize: '1.6rem',
+                                                                height: '40px',
+                                                                marginTop: '20px',
+                                                            }}
+                                                        >
+                                                            Loại sản phẩm
+                                                        </span>
                                                         <input
                                                             type="text"
                                                             className="form-control"
                                                             value={ProductTypeName}
                                                             onChange={this.changeProductTypeName}
+                                                            style={{
+                                                                height: '40px',
+                                                                marginTop: '20px',
+                                                                fontSize: '1.6rem',
+                                                            }}
                                                         />
                                                     </div>
 
@@ -283,8 +299,9 @@ export class ProductType extends Component {
                                                             type="button"
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.createClick()}
+                                                            style={{ fontSize: '1.6rem', marginTop: '20px' }}
                                                         >
-                                                            Thêm sản phẩm
+                                                            Thêm loại
                                                         </button>
                                                     ) : null}
 
@@ -293,6 +310,11 @@ export class ProductType extends Component {
                                                             type="button"
                                                             className="btn btn-primary float-start"
                                                             onClick={() => this.updateClick()}
+                                                            style={{
+                                                                height: '40px',
+                                                                marginTop: '20px',
+                                                                fontSize: '1.6rem',
+                                                            }}
                                                         >
                                                             Cập nhật
                                                         </button>
