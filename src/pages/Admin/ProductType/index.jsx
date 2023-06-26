@@ -103,53 +103,6 @@ export class ProductType extends Component {
             });
     }
 
-    // createClick() {
-    //     fetch(variables.API_URL + 'producttype', {
-    //         method: 'POST',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             ProductTypeName: this.state.ProductTypeName,
-    //         }),
-    //     })
-    //         .then((res) => res.json())
-    //         .then(
-    //             (result) => {
-    //                 alert(result);
-    //                 this.refreshList();
-    //             },
-    //             (error) => {
-    //                 alert('Failed');
-    //             },
-    //         );
-    // }
-
-    // updateClick() {
-    //     fetch(variables.API_URL + 'producttype', {
-    //         method: 'PUT',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             ProductTypeId: this.state.ProductTypeId,
-    //             ProductTypeName: this.state.ProductTypeName,
-    //         }),
-    //     })
-    //         .then((res) => res.json())
-    //         .then(
-    //             (result) => {
-    //                 alert(result);
-    //                 this.refreshList();
-    //             },
-    //             (error) => {
-    //                 alert('Failed');
-    //             },
-    //         );
-    // }
-
     deleteClick(id) {
         if (window.confirm('Bạn có chắc chắn muốn xóa?')) {
             fetch(variables.API_URL + 'producttype/' + id, {

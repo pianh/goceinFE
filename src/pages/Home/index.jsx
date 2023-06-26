@@ -125,8 +125,8 @@ export class Home extends Component {
                         <FontAwesomeIcon className="home-page__header-cart-icon" icon={faBagShopping} />
                     </div>
                 </header>
-                <section className={`home-page-slider-wrapper ${isVisible ? 'animate__zoomIn' : ''}`}>
-                    <div className="home-page__slider-text-wrapper">
+                <section className={`home-page-slider-wrapper row ${isVisible ? 'animate__zoomIn' : ''}`}>
+                    <div className="home-page__slider-text-wrapper col-sm-5">
                         <h1>A place where everything special</h1>
                         <p>
                             We help you ti buy fresh grocery from your home. <br /> Eat fresh and stay healthy
@@ -156,11 +156,11 @@ export class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="home-page__slider-card">
+                    <div className="home-page__slider-card col-sm-7">
                         <div className="home-page__slider-card-cycle"></div>
                         <div className="home-page__slider-card-after">
                             <div className="home-page__slider-card-img">
-                                <img src={broccoliorganic} alt="broccoliorganic" />
+                                <img src={broccoliorganic} alt="broccoliorganic" className="img-fluid" />
                             </div>
                             <div className="home-page__slider-card-body">
                                 <div>
@@ -197,7 +197,7 @@ export class Home extends Component {
                         </div>
                         <div className="home-page__slider-card-before">
                             <div className="home-page__slider-card-img">
-                                <img src={avocado} alt="broccoliorganic" />
+                                <img src={avocado} alt="broccoliorganic" className="img-fluid" />
                             </div>
                             <div className="home-page__slider-card-body">
                                 <div>
@@ -237,11 +237,11 @@ export class Home extends Component {
                 <section className="home-page__company">
                     <span className="home-page__company-title">Trusted and lovely by the best company</span>
                     <div className="home-page__company-brand">
-                        <img src={ifttt} alt="ifttt" className="home-page__company-brand--ifttt" />
-                        <img src={amazon} alt="amazon" className="home-page__company-brand--amazon" />
-                        <img src={google} alt="google" className="home-page__company-brand--google" />
-                        <img src={paypal} alt="paypal" className="home-page__company-brand--paypal" />
-                        <img src={air} alt="airbnb" className="home-page__company-brand--air" />
+                        <img src={ifttt} alt="ifttt" className="home-page__company-brand--ifttt img-fluid" />
+                        <img src={amazon} alt="amazon" className="home-page__company-brand--amazon img-fluid" />
+                        <img src={google} alt="google" className="home-page__company-brand--google img-fluid" />
+                        <img src={paypal} alt="paypal" className="home-page__company-brand--paypal img-fluid" />
+                        <img src={air} alt="airbnb" className="home-page__company-brand--air img-fluid" />
                     </div>
                 </section>
                 <section className={`home-page__service ${isVisible ? 'animate__animated animate__fadeInRight' : ''}`}>
